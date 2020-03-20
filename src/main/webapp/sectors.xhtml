@@ -1,12 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Doctors in #{sectorDetails.sector.name} sector:</h2>
+    <ul>
+        <ui:repeat value="#{sectorDetails.sector.doctors}" var="doctor">
+            <li>
+                <h:link value="id: #{doctor.id}, name: #{doctor.name}"/>
+            </li>
+        </ui:repeat>
+    </ul>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{sectorDetails.newDoctor.name}" required="true"/>
+        <h:commandButton value="Add a new doctor to this sector" action="#{sectorDetails.createDoctor}">
+            <f:param name="sectorId" value="#{sectorDetails.sector.id}"></f:param>
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="index" value="Back"></h:link>
+</h:body>
 </html>
