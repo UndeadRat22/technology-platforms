@@ -8,13 +8,31 @@
 <h:head/>
 <h:body>
     <h2>Doctor #{doctorDetails.doctor.name}</h2>
+    <h3>Appointments: </h3>
     <ul>
-        <ui:repeat value="#{doctorDetails.doctor.patients}" var="patient">
+        <ui:repeat value="#{doctorDetails.doctor.appointments}" var="appointment">
             <li>
-                <h:link value="id: #{patient.id}, name: #{patient.name}" />
+                Time: #{appointment.time}, Patient: #{appointment.patient.name}
             </li>
         </ui:repeat>
     </ul>
+
+
+
+    <h3>Patients: </h3>
+    <h:form>
+        <h:inputText a:placeholder="date" value="#{doctorDetails.newAppointmentTime}" required="true"/>
+        <ul>
+            <ui:repeat value="#{doctorDetails.doctor.patients}" var="patient">
+                <li>
+                    Patient: #{patient.name}, ID: #{patient.id}
+                    <h:commandButton value = "Create appointment with this patient" action="#{doctorDetails.createAppointment(patient)}">
+                        <f:param name="doctorId" value="#{doctorDetails.doctor.id}"/>
+                    </h:commandButton>
+                </li>
+            </ui:repeat>
+        </ul>
+    </h:form>
     <h:form>
         <h:inputText a:placeholder="name" value="#{doctorDetails.newPatient.name}" required="true"/>
         <h:commandButton value="Assing a new patient to this doctor" action="#{doctorDetails.createPatient}">

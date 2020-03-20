@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -28,5 +29,5 @@ public class Appointment {
     private Doctor doctor;
 
     @Column(name = "TIME")
-    private Date time;
+    private LocalDateTime time;
 }
