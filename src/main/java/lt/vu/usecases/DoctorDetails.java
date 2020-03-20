@@ -9,6 +9,7 @@ import lt.vu.persistence.AppointmentDAO;
 import lt.vu.persistence.DoctorDAO;
 import lt.vu.persistence.PatientDAO;
 import lt.vu.persistence.SectorDAO;
+import lt.vu.services.AppointmentDateParser;
 import lt.vu.services.ParameterCollector;
 
 import javax.annotation.PostConstruct;
@@ -31,6 +32,8 @@ public class DoctorDetails {
     private AppointmentDAO appointmentDAO;
     @Inject
     private ParameterCollector parameterCollector;
+    @Inject
+    private AppointmentDateParser appointmentDateParser;
 
     @Getter @Setter
     private Doctor doctor;
@@ -62,11 +65,7 @@ public class DoctorDetails {
     @Transactional
     public String createAppointment(Patient patient){
 
-        LocalDateTime date =
-                LocalDateTime.parse(
-                        newAppointmentTime,
-                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-
+        LocalDateTime date = appointmentDateParser.parse(newAppointmentTime);
         newAppointment.setTime(date);
 
         newAppointment.setPatient(patient);
