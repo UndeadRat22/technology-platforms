@@ -11,7 +11,7 @@
     <ul>
         <ui:repeat value="#{sectorDetails.sector.doctors}" var="doctor">
             <li>
-                <h:link value="id: #{doctor.id}, name: #{doctor.name}"/>
+                <h:link value="id: #{doctor.id}, name: #{doctor.name}" outcome="doctors?doctorId=#{doctor.id}"/>
             </li>
         </ui:repeat>
     </ul>

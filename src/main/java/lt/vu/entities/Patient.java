@@ -10,13 +10,11 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Doctor.findAll", query = "select a from Doctor as a")
+        @NamedQuery(name= "Patient.findAll", query = "select p from Patient as p")
 })
-@Table(name = "DOCTOR")
-@Getter
-@Setter
+@Getter @Setter
 @EqualsAndHashCode
-public class Doctor {
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -26,12 +24,9 @@ public class Doctor {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "SECTOR_ID")
-    private Sector sector;
+    @JoinColumn(name = "MAIN_DOCTOR_ID")
+    private Doctor doctor;
 
-    @OneToMany(mappedBy = "doctor")
-    private List<Patient> patients;
-
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "patient")
     private List<Appointment> appointments;
 }

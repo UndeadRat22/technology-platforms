@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Doctor #{doctorDetails.doctor.name}</h2>
+    <ul>
+        <ui:repeat value="#{doctorDetails.doctor.patients}" var="patient">
+            <li>
+                <h:link value="id: #{patient.id}, name: #{patient.name}" />
+            </li>
+        </ui:repeat>
+    </ul>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{doctorDetails.newPatient.name}" required="true"/>
+        <h:commandButton value="Assing a new patient to this doctor" action="#{doctorDetails.createPatient}">
+            <f:param name="doctorId" value="#{doctorDetails.doctor.id}"/>
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="sectors?sectorId=#{doctorDetails.doctor.sector.id}" value="Back"></h:link>
+</h:body>
+</html>
