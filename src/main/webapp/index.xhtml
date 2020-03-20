@@ -6,6 +6,15 @@
 >
 <h:head/>
 <h:body>
-    <h2>Hello world</h2>
+    <h2>Sectors:</h2>
+    <ui:repeat value="#{sectors.allSectors}" var="sector">
+        <li>
+            <h:link value="#{sector.name}" outcome="sectors?sectorId=#{sector.id}"/>
+        </li>
+    </ui:repeat>
+    <h:form>
+        <h:inputText value="#{sectors.newSector.name}" required="true"/>
+        <h:commandButton value="Add new Sector" action="#{sectors.createSector}"/>
+    </h:form>
 </h:body>
 </html>
