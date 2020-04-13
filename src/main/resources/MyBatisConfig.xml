@@ -4,9 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="lt.vu.mybatis.model.Appointment" alias="Appointment"/>
         <typeAlias type="lt.vu.mybatis.model.Doctor" alias="Doctor"/>
-        <typeAlias type="lt.vu.mybatis.model.Patient" alias="Patient"/>
         <typeAlias type="lt.vu.mybatis.model.Sector" alias="Sector"/>
     </typeAliases>
     <environments default="development">
@@ -18,7 +16,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis/xml/TeamMapper.xml"/>
-        <mapper resource="mybatis/xml/PlayerMapper.xml"/>
+        <mapper resource="mybatis/xml/DoctorMapper.xml"/>
+        <mapper resource="mybatis/xml/SectorMapper.xml"/>
     </mappers>
 </configuration>

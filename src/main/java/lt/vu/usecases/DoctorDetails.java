@@ -5,6 +5,7 @@ import lombok.Setter;
 import lt.vu.entities.Appointment;
 import lt.vu.entities.Doctor;
 import lt.vu.entities.Patient;
+import lt.vu.mybatis.dao.DoctorMapper;
 import lt.vu.persistence.AppointmentDAO;
 import lt.vu.persistence.DoctorDAO;
 import lt.vu.persistence.PatientDAO;
@@ -24,6 +25,8 @@ import java.util.List;
 
 @Model
 public class DoctorDetails {
+    @Inject
+    private DoctorMapper doctorMapper;
     @Inject
     private DoctorDAO doctorDAO;
     @Inject
