@@ -58,7 +58,7 @@
                     <artifactId>mybatis-generator-maven-plugin</artifactId>
                     <version>1.4.0</version>
                     <configuration>
-                        <contexts>HospitalDB</contexts>
+                        <contexts>HospitalDB1</contexts>
                         <verbose>true</verbose>
                     </configuration>
                     <executions>

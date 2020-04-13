@@ -7,17 +7,18 @@
         <typeAlias type="lt.vu.mybatis.model.Appointment" alias="Appointment"/>
         <typeAlias type="lt.vu.mybatis.model.Doctor" alias="Doctor"/>
         <typeAlias type="lt.vu.mybatis.model.Patient" alias="Patient"/>
+        <typeAlias type="lt.vu.mybatis.model.Sector" alias="Sector"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="MANAGED"/>
             <dataSource type="JNDI">
-                <property name="data_source" value="PlayersDataSource"/>
+                <property name="data_source" value="HospitalDataSource"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis.xml/TeamMapper.xml"/>
-        <mapper resource="mybatis.xml/PlayerMapper.xml"/>
+        <mapper resource="mybatis/xml/TeamMapper.xml"/>
+        <mapper resource="mybatis/xml/PlayerMapper.xml"/>
     </mappers>
 </configuration>
