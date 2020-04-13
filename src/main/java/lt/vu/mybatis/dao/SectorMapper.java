@@ -1,6 +1,6 @@
 package lt.vu.mybatis.dao;
 
-import lt.vu.uc.mybatis.model.Sector;
+import lt.vu.mybatis.model.Sector;
 import org.mybatis.cdi.Mapper;
 
 import java.util.List;

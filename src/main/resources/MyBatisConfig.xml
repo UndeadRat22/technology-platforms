@@ -16,7 +16,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis/xml/DoctorMapper.xml"/>
-        <mapper resource="mybatis/xml/SectorMapper.xml"/>
+        <mapper resource="mybatis/DoctorMapper.xml"/>
+        <mapper resource="mybatis/SectorMapper.xml"/>
     </mappers>
 </configuration>
