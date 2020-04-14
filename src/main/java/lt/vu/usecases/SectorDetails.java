@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Doctor;
 import lt.vu.entities.Sector;
+import lt.vu.mybatis.dao.SectorMapper;
 import lt.vu.persistence.DoctorDAO;
 import lt.vu.persistence.SectorDAO;
 import lt.vu.services.ParameterCollector;
@@ -15,6 +16,8 @@ import javax.transaction.Transactional;
 
 @Model
 public class SectorDetails {
+    @Inject
+    private SectorMapper sectorMapper;
     @Inject
     private SectorDAO sectorDAO;
     @Inject
@@ -39,6 +42,16 @@ public class SectorDetails {
     public String createDoctor(){
         newDoctor.setSector(sector);
         doctorDAO.persist(newDoctor);
+        return "sectors?faces-redirect=true&sectorId=" + sector.getId();
+    }
+
+    @Transactional
+    public String updateSectorName(){
+        lt.vu.mybatis.model.Sector updatedSector = new lt.vu.mybatis.model.Sector();
+        updatedSector.setId(sector.getId());
+        updatedSector.setName(sector.getName());
+        sectorMapper.updateByPrimaryKey(updatedSector);
+
         return "sectors?faces-redirect=true&sectorId=" + sector.getId();
     }
 }

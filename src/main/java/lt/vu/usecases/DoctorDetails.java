@@ -50,8 +50,6 @@ public class DoctorDetails {
     @Getter @Setter
     private Appointment newAppointment = new Appointment();
 
-    //TODO: appointments List<Appointment>
-
     @PostConstruct
     public void init(){
         Integer sectorId = parameterCollector.getInt("doctorId");

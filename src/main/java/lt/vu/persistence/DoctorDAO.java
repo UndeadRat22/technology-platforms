@@ -1,13 +1,13 @@
 package lt.vu.persistence;
 
-import lombok.Setter;
-import lt.vu.entities.Doctor;
-import lt.vu.entities.Sector;
+        import lombok.Setter;
+        import lt.vu.entities.Doctor;
+        import lt.vu.entities.Sector;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import java.util.List;
+        import javax.enterprise.context.ApplicationScoped;
+        import javax.inject.Inject;
+        import javax.persistence.EntityManager;
+        import java.util.List;
 
 @ApplicationScoped
 public class DoctorDAO {

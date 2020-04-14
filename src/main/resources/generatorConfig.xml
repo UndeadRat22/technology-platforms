@@ -4,21 +4,21 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="HospitalDB4" targetRuntime="MyBatis3Simple">
+    <context id="HospitalDB6" targetRuntime="MyBatis3Simple">
         <jdbcConnection driverClass="org.h2.Driver"
-                        connectionURL="jdbc:h2:~/h2database/HospitalDB4;AUTO_SERVER=TRUE"
+                        connectionURL="jdbc:h2:~/h2database/HospitalDB6;AUTO_SERVER=TRUE"
                         userId="sa"
                         password="sa">
         </jdbcConnection>
 
         <javaModelGenerator
-                targetPackage="lt.vu.uc.mybatis.model"
+                targetPackage="lt.vu.mybatis.model"
                 targetProject="MAVEN" />
 
-        <sqlMapGenerator targetPackage="lt.vu.uc.mybatis.xml"
+        <sqlMapGenerator targetPackage="lt.vu.mybatis.xml"
                          targetProject="MAVEN" />
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="lt.vu.uc.mybatis.dao"
+                             targetPackage="lt.vu.mybatis.dao"
                              targetProject="MAVEN" />
 
         <table schema="public" tableName="doctor">
