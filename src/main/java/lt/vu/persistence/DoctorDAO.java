@@ -1,9 +1,5 @@
 package lt.vu.persistence;
-
-        import lombok.Setter;
         import lt.vu.entities.Doctor;
-        import lt.vu.entities.Sector;
-
         import javax.enterprise.context.ApplicationScoped;
         import javax.inject.Inject;
         import javax.persistence.EntityManager;
@@ -12,7 +8,6 @@ package lt.vu.persistence;
 @ApplicationScoped
 public class DoctorDAO {
     @Inject
-    @Setter
     private EntityManager entityManager;
 
     public void persist(Doctor doctor) {

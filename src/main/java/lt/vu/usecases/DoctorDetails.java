@@ -16,6 +16,7 @@ import lt.vu.services.ParameterCollector;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,8 +26,6 @@ import java.util.List;
 
 @Model
 public class DoctorDetails {
-    @Inject
-    private DoctorMapper doctorMapper;
     @Inject
     private DoctorDAO doctorDAO;
     @Inject
@@ -52,8 +51,8 @@ public class DoctorDetails {
 
     @PostConstruct
     public void init(){
-        Integer sectorId = parameterCollector.getInt("doctorId");
-        doctor = doctorDAO.findOne(sectorId);
+        Integer doctorId = parameterCollector.getInt("doctorId");
+        doctor = doctorDAO.findOne(doctorId);
     }
 
     @Transactional

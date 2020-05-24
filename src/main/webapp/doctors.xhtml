@@ -4,10 +4,29 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+>
 <h:head/>
 <h:body>
     <h2>Doctor #{doctorDetails.doctor.name}</h2>
+    <h3>Update Doctor Name:</h3>
+    <h:form>
+        <h:inputText a:placeholder="new name" value="#{updateDoctorDetails.doctor.name}" required="true"/>
+        <h:commandButton value="Update" action="#{updateDoctorDetails.updateDoctorName()}">
+            <f:param name="doctorId" value="#{doctorDetails.doctor.id}"/>
+        </h:commandButton>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again"
+                      rendered="#{param['error'] == 'optimistic-lock-exception'}"/>
+    </h:form>
+    <h:form>
+        <h:outputText id="randomNameOutputText" value="#{generateRandomName.nameGenerationStatus}"/>
+        <h:commandButton value="Generate random name"
+                         disabled="#{generateRandomName.generatorRunning}"
+                         action="#{generateRandomName.generateNewName()}">
+            <f:param name="doctorId" value="#{doctorDetails.doctor.id}"/>
+        </h:commandButton>
+        <!--<p:poll interval="1" update="randomNameOutputText"/>-->
+    </h:form>
     <h3>Appointments: </h3>
     <ul>
         <ui:repeat value="#{doctorDetails.doctor.appointments}" var="appointment">
@@ -17,8 +36,6 @@
         </ui:repeat>
     </ul>
 
-
-
     <h3>Patients: </h3>
     <h:form>
         <h:inputText a:placeholder="date" value="#{doctorDetails.newAppointmentTime}" required="true"/>
@@ -26,7 +43,8 @@
             <ui:repeat value="#{doctorDetails.doctor.patients}" var="patient">
                 <li>
                     Patient: #{patient.name}, ID: #{patient.id}
-                    <h:commandButton value = "Create appointment with this patient" action="#{doctorDetails.createAppointment(patient)}">
+                    <h:commandButton value="Create appointment with this patient"
+                                     action="#{doctorDetails.createAppointment(patient)}">
                         <f:param name="doctorId" value="#{doctorDetails.doctor.id}"/>
                     </h:commandButton>
                 </li>
