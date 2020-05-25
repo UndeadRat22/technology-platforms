@@ -1,8 +1,8 @@
 package lt.vu.usecases;
 
 import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.services.IRandomNameGenerator;
 import lt.vu.services.ParameterCollector;
-import lt.vu.services.RandomNameGenerator;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 @Named
 public class GenerateRandomName implements Serializable {
     @Inject
-    private RandomNameGenerator randomNameGenerator;
+    private IRandomNameGenerator randomNameGenerator;
 
     @Inject
     private ParameterCollector parameterCollector;
@@ -42,6 +42,6 @@ public class GenerateRandomName implements Serializable {
         } else if (isGeneratorRunning()) {
             return "Generation in progress";
         }
-        return "Suggested doctor name number: " + nameGenerationTask.get();
+        return "Suggested doctor name: " + nameGenerationTask.get();
     }
 }
