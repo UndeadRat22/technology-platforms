@@ -9,7 +9,7 @@
     <h2>Sectors:</h2>
     <ui:repeat value="#{sectors.allSectors}" var="sector">
         <li>
-            <h:link value="#{sector.name}" outcome="sectors?sectorId=#{sector.id}"/>
+            <h:link value="#{sectors.formatName(sector.name)}" outcome="sectors?sectorId=#{sector.id}"/>
         </li>
     </ui:repeat>
     <h:form>

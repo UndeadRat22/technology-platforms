@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import lt.vu.entities.Sector;
 import lt.vu.persistence.SectorDAO;
+import lt.vu.services.formatting.ISectorNameFormatter;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -14,6 +15,8 @@ import java.util.List;
 
 @Model
 public class Sectors {
+    @Inject
+    private ISectorNameFormatter sectorNameFormatter;
     @Inject
     private SectorDAO sectorDAO;
 
@@ -39,5 +42,7 @@ public class Sectors {
         return "index?faces-redirect=true";
     }
 
-
+    public String formatName(String sectorName){
+        return sectorNameFormatter.format(sectorName);
+    }
 }

@@ -18,15 +18,15 @@
     <h:form>
         <h:inputText a:placeholder="name" value="#{sectorDetails.newDoctor.name}" required="true"/>
         <h:commandButton value="Add a new doctor to this sector" action="#{sectorDetails.createDoctor}">
-            <f:param name="sectorId" value="#{sectorDetails.sector.id}"></f:param>
+            <f:param name="sectorId" value="#{sectorDetails.sector.id}"/>
         </h:commandButton>
     </h:form>
     <h:form>
         <h:inputText a:placeholder="name" value="#{sectorDetails.sector.name}" required="true"/>
         <h:commandButton value="change name" action="#{sectorDetails.updateSectorName}">
-            <f:param name="sectorId" value="#{sectorDetails.sector.id}"></f:param>
+            <f:param name="sectorId" value="#{sectorDetails.sector.id}"/>
         </h:commandButton>
     </h:form>
-    <h:link outcome="index" value="Back"></h:link>
+    <h:link outcome="index" value="Back"/>
 </h:body>
 </html>
