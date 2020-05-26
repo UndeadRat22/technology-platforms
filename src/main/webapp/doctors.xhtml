@@ -5,10 +5,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
 >
 <h:head/>
 <h:body>
-    <h2>Doctor #{doctorDetails.doctor.name}</h2>
+    <h2>Doctor #{updateDoctorDetails.doctor.name}</h2>
     <h3>Update Doctor Name:</h3>
     <h:form>
         <h:inputText a:placeholder="new name" value="#{updateDoctorDetails.doctor.name}" required="true"/>
@@ -24,8 +25,8 @@
                          disabled="#{generateRandomName.generatorRunning}"
                          action="#{generateRandomName.generateNewName()}">
             <f:param name="doctorId" value="#{doctorDetails.doctor.id}"/>
+            <p:poll interval="1" update="randomNameOutputText"/>
         </h:commandButton>
-        <!--<p:poll interval="1" update="randomNameOutputText"/>-->
     </h:form>
     <h3>Appointments: </h3>
     <ul>

@@ -5,9 +5,11 @@ import lt.vu.services.IRandomNameGenerator;
 import lt.vu.services.ParameterCollector;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -16,19 +18,19 @@ import java.util.concurrent.ExecutionException;
 public class GenerateRandomName implements Serializable {
     @Inject
     private IRandomNameGenerator randomNameGenerator;
-
     @Inject
     private ParameterCollector parameterCollector;
+
 
     private CompletableFuture<String> nameGenerationTask = null;
 
     @LoggedInvocation
     public String generateNewName(){
-        Integer doctorId = parameterCollector.getInt("doctorId");
+        String id = parameterCollector.get("doctorId");
 
         nameGenerationTask = CompletableFuture.supplyAsync(() -> randomNameGenerator.generateRandomName());
 
-        return "doctors?faces-redirect=true&doctorId=" + doctorId.toString();
+        return "doctors?faces-redirect=true&doctorId=" + id;
     }
 
     @LoggedInvocation

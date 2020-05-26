@@ -14,18 +14,22 @@ import lt.vu.services.AppointmentDateParser;
 import lt.vu.services.ParameterCollector;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
-@Model
-public class DoctorDetails {
+@SessionScoped
+@Named
+public class DoctorDetails implements Serializable {
     @Inject
     private DoctorDAO doctorDAO;
     @Inject
